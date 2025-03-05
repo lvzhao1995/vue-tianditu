@@ -2,6 +2,10 @@ import { defineComponent, h } from "vue";
 import { TdtMarker } from "~/overlay/marker";
 import { TdtPolyline } from "~/overlay/polyline";
 import { useState } from "../use";
+import startPng from "../styles/start.png";
+import endPng from "../styles/end.png";
+import mapBusPng from "../styles/map_bus.png";
+import mapMetroPng from "../styles/map_metro.png";
 
 export const RouteMapView = defineComponent({
   setup() {
@@ -14,7 +18,7 @@ export const RouteMapView = defineComponent({
           ? h(TdtMarker, {
               position: state.startMarker,
               icon: {
-                iconUrl: "http://lbs.tianditu.gov.cn/images/bus/start.png",
+                iconUrl: startPng,
                 iconSize: [44, 34],
                 iconAnchor: [12, 31]
               }
@@ -25,7 +29,7 @@ export const RouteMapView = defineComponent({
           ? h(TdtMarker, {
               position: state.endMarker,
               icon: {
-                iconUrl: "http://lbs.tianditu.gov.cn/images/bus/end.png",
+                iconUrl: endPng,
                 iconSize: [44, 34],
                 iconAnchor: [12, 31]
               }
@@ -66,7 +70,7 @@ export const RouteMapView = defineComponent({
           h(TdtMarker, {
             position,
             icon: {
-              iconUrl: "http://lbs.tianditu.gov.cn/images/bus/map_bus.png",
+              iconUrl: mapBusPng,
               iconSize: [23, 23],
               iconAnchor: [12, 12]
             }
@@ -77,7 +81,7 @@ export const RouteMapView = defineComponent({
           h(TdtMarker, {
             position,
             icon: {
-              iconUrl: "http://lbs.tianditu.gov.cn/images/bus/map_metro.png",
+              iconUrl: mapMetroPng,
               iconSize: [23, 23],
               iconAnchor: [12, 12]
             }

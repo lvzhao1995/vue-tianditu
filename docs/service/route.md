@@ -16,6 +16,6 @@ import "vue-tianditu/lib/style.css";
 
 <demo-route></demo-route>
 
-<code-details>
+::: details 查看代码
 <<< @/.vitepress/components/demo-route/index.vue
-</code-details>
+:::

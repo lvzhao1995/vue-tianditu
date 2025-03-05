@@ -33,6 +33,5 @@ export function useState() {
     metroMarkers: []
   };
 
-  const injectState = inject<RouteState>("routeState");
-  return injectState || reactive({ ...searchState, ...drivingState, ...transitState });
+  return inject<RouteState>("routeState", () => reactive({ ...searchState, ...drivingState, ...transitState }), true);
 }
