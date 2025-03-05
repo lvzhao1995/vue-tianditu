@@ -1,3 +1,22 @@
+# [3.0.0-beta.0](https://github.com/lvzhao1995/vue-tianditu/compare/v2.7.6...v3.0.0-beta.0) (2025-03-05)
+
+
+### Bug Fixes
+
+* 修复使用时的typescript错误 ([6af25f2](https://github.com/lvzhao1995/vue-tianditu/commit/6af25f228b39a6688c1e94dabca31398de125554))
+
+
+### chore
+
+* 去除h函数的兼容处理，直接使用vue导出的渲染函数 ([8d67d58](https://github.com/lvzhao1995/vue-tianditu/commit/8d67d58828ab23529241bf343a896e7548b63439))
+
+
+### BREAKING CHANGES
+
+* 不再支持Vue 2
+
+
+
 ## [2.7.6](https://github.com/SoulLyoko/vue-tianditu/compare/v2.7.5...v2.7.6) (2022-05-09)
 
 ### Bug Fixes
