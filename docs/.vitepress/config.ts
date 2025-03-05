@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 import path from "path";
 
 export default defineConfig({
-  base: "/vue-tianditu/",
+  base: "/vue-tianditu2/",
   lang: "zh-CN",
   title: "VueTianditu",
   description: "Vue Components for TiandituApi",
@@ -21,13 +21,16 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/SoulLyoko/vue-tianditu"
+        link: "https://github.com/lvzhao1995/vue-tianditu"
       }
     ],
     nav: [
       {
-        text: "v2.x",
-        items: [{ text: "v1.x", link: "https://soullyoko.github.io/vue-tianditu-legacy/" }]
+        text: "v3.x",
+        items: [
+          { text: "v2.x", link: "https://soullyoko.github.io/vue-tianditu/" },
+          { text: "v1.x", link: "https://soullyoko.github.io/vue-tianditu-legacy/" }
+        ]
       },
       { text: "天地图官网", link: "https://www.tianditu.gov.cn/" }
     ],

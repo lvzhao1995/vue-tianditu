@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import { execa } from "execa";
-import { prompt } from "enquirer";
+import enquirer from "enquirer";
+
+const { prompt } = enquirer;
 
 async function main() {
   console.log("Choicing version...");

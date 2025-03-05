@@ -17,11 +17,6 @@ export default [
   ...vueTsEslintConfig(),
   skipFormatting,
   {
-    languageOptions: {
-      globals: {
-        T: "readonly"
-      }
-    },
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
       "vue/multi-word-component-names": "off"

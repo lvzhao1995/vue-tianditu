@@ -1,21 +1,27 @@
 {
-  "name": "vue-tianditu",
-  "version": "2.7.6",
-  "description": "vue-tianditu",
-  "author": "SoulLyoko <519052532@qq.com>",
-  "repository": "https://github.com/SoulLyoko/vue-tianditu.git",
-  "homepage": "https://github.com/SoulLyoko/vue-tianditu#readme",
-  "private": false,
+  "name": "vue-tianditu2",
+  "version": "3.0.0-beta.0",
+  "description": "",
+  "repository": "https://github.com/lvzhao1995/vue-tianditu.git",
+  "homepage": "https://github.com/lvzhao1995/vue-tianditu#readme",
   "license": "MIT",
   "type": "module",
-  "main": "lib/vue-tianditu.umd.js",
-  "types": "lib/vue-tianditu.d.ts",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.mjs",
+  "types": "dist/es/index.d.ts",
   "keywords": [
     "vue",
     "tianditu",
     "map",
     "skymap",
-    "tianmap"
+    "tianmap",
+    "天地图"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE"
   ],
   "scripts": {
     "dev": "vite",
@@ -31,10 +37,10 @@
     "lint": "eslint . --fix",
     "format": "prettier --write .",
     "copy-docs": "ncp README.md docs/index.md && ncp CHANGELOG.md docs/CHANGELOG.md",
-    "prepare": "husky",
-    "precommit": "node scripts/precommit.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "node scripts/release.js"
+    "prepare": "husky",
+    "release": "node scripts/release.js",
+    "prepublishOnly": "run-p build"
   },
   "dependencies": {
     "mitt": "^3.0.1"

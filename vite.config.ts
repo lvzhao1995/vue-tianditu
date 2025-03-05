@@ -9,7 +9,7 @@ export default defineConfig({
     vue(),
     dts({
       entryRoot: "./packages",
-      outDir: "./lib/es",
+      outDir: "./dist/es",
       tsconfigPath: "./tsconfig.app.json"
     })
   ],
@@ -21,12 +21,10 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "packages/index.ts"),
-      name: "VueTianditu",
-      fileName: "vue-tianditu",
       cssFileName: "style"
     },
     target: "modules",
-    outDir: "./lib",
+    outDir: "./dist",
     minify: true,
     sourcemap: true,
     rollupOptions: {
@@ -38,14 +36,14 @@ export default defineConfig({
           format: "es",
           preserveModules: true,
           entryFileNames: "[name].mjs",
-          dir: "./lib/es",
+          dir: "./dist/es",
           preserveModulesRoot: "packages"
         },
         {
           format: "cjs",
           preserveModules: true,
           entryFileNames: "[name].js",
-          dir: "./lib/lib",
+          dir: "./dist/lib",
           preserveModulesRoot: "packages"
         }
       ]
