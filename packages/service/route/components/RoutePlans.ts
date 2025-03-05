@@ -1,5 +1,4 @@
-import { defineComponent } from "vue";
-import { h } from "~/utils/h-demi";
+import { defineComponent, h } from "vue";
 import { useState } from "../use";
 import "../styles/route-plans.scss";
 
@@ -23,10 +22,8 @@ export const RoutePlans = defineComponent({
                   h(
                     "details",
                     {
-                      on: {
-                        click: () => {
-                          state.drivingPlanIndex = planIndex;
-                        }
+                      onClick: () => {
+                        state.drivingPlanIndex = planIndex;
                       }
                     },
                     [
@@ -40,7 +37,7 @@ export const RoutePlans = defineComponent({
               )
             : "",
           // 公交方案
-          state.drivingPlans.length
+          state.transitPlans.length
             ? h(
                 "div",
                 null,
@@ -48,10 +45,8 @@ export const RoutePlans = defineComponent({
                   h(
                     "details",
                     {
-                      on: {
-                        click: () => {
-                          state.transitPlanIndex = planIndex;
-                        }
+                      onClick: () => {
+                        state.transitPlanIndex = planIndex;
                       },
                       style: { backgroundColor: "#fff" }
                     },

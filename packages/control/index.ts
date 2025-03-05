@@ -2,7 +2,7 @@ import { defineComponent, onMounted, onUnmounted } from "vue";
 import { useEvent } from "~/use/event";
 import { useMapRoot } from "~/use/mapRoot";
 import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
-import { h } from "~/utils/h-demi";
+import { h } from "vue";
 
 export const TdtControl = defineComponent({
   name: "TdtControl",
@@ -16,7 +16,7 @@ export const TdtControl = defineComponent({
 
       const tdtMap = await useMapRoot();
       const tdtComponent = useInit(props);
-      tdtComponent.onAdd = () => controlRef.el || controlRef.elm;
+      tdtComponent.onAdd = () => controlRef.el;
       tdtComponent.onRemove = () => {};
       tdtMap.addControl(tdtComponent);
       useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent });

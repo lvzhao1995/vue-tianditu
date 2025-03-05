@@ -1,8 +1,7 @@
-import { computed, defineComponent, onMounted, onUnmounted } from "vue";
+import { computed, defineComponent, h, onMounted, onUnmounted } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { useEvent } from "~/use/event";
 import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
-import { h } from "~/utils/h-demi";
 
 export const TdtInfowindow = defineComponent({
   name: "TdtInfowindow",
@@ -28,7 +27,7 @@ export const TdtInfowindow = defineComponent({
     onMounted(async () => {
       onUnmounted(() => tdtMap?.closeInfoWindow());
 
-      const content = slots.default ? contentRef.value.el || contentRef.value.elm : undefined;
+      const content = slots.default ? (contentRef.value.el as HTMLElement) : undefined;
       const tdtMap = await useMapRoot();
       const tdtComponent = useInit(props, content);
       useEvent({ events: NATIVE_EVENTS, emit, instance: tdtComponent, emitted });

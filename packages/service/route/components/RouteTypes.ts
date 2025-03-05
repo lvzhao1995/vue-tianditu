@@ -1,5 +1,4 @@
-import { defineComponent } from "vue";
-import { h } from "~/utils/h-demi";
+import { defineComponent, h } from "vue";
 import { useState } from "../use";
 import "../styles/route-types.scss";
 
@@ -20,9 +19,7 @@ export const RouteTypes = defineComponent({
               "div",
               {
                 class: "route-types-item" + (state.routeType == Number(key) ? " active" : ""),
-                on: {
-                  click: () => (state.routeType = Number(key))
-                }
+                onClick: () => (state.routeType = Number(key))
               },
               value
             )

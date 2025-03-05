@@ -1,5 +1,4 @@
-import { defineComponent, computed } from "vue";
-import { h } from "~/utils/h-demi";
+import { computed, defineComponent, h } from "vue";
 import "../styles/search-page.scss";
 
 export const SearchPage = defineComponent({
@@ -44,9 +43,7 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "tdt-search-page__btn first-page",
-              on: {
-                click: () => (pageCurrent.value = 1)
-              }
+              onClick: () => (pageCurrent.value = 1)
             },
             "«"
           ),
@@ -54,9 +51,7 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "tdt-search-page__btn prev-page",
-              on: {
-                click: () => pageCurrent.value--
-              }
+              onClick: () => pageCurrent.value--
             },
             "‹"
           ),
@@ -67,9 +62,7 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "tdt-search-page__btn next-page",
-              on: {
-                click: () => pageCurrent.value++
-              }
+              onClick: () => pageCurrent.value++
             },
             "›"
           ),
@@ -77,9 +70,7 @@ export const SearchPage = defineComponent({
             "span",
             {
               class: "tdt-search-page__btn last-page",
-              on: {
-                click: () => (pageCurrent.value = pageCount.value)
-              }
+              onClick: () => (pageCurrent.value = pageCount.value)
             },
             "»"
           )

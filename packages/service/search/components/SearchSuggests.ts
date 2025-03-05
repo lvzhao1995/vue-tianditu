@@ -1,5 +1,4 @@
-import { defineComponent, type PropType } from "vue";
-import { h } from "~/utils/h-demi";
+import { defineComponent, h, type PropType } from "vue";
 import "../styles/search-suggests.scss";
 
 export const SearchSuggests = defineComponent({
@@ -25,9 +24,7 @@ export const SearchSuggests = defineComponent({
             "div",
             {
               class: "search-suggests-item",
-              on: {
-                click: () => emit("suggest-click", item)
-              }
+              onClick: () => emit("suggest-click", item)
             },
             [
               h("span", { class: "search-suggests-item__name" }, item.name),

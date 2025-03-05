@@ -1,6 +1,5 @@
-import { defineComponent, type PropType } from "vue";
+import { defineComponent, h, type PropType } from "vue";
 import { SearchPage } from "./SearchPage";
-import { h } from "~/utils/h-demi";
 import "../styles/search-pois.scss";
 
 export type PageProps = InstanceType<typeof SearchPage>["$props"];
@@ -34,9 +33,7 @@ export const SearchPois = defineComponent({
               "div",
               {
                 class: "search-pois-item",
-                on: {
-                  click: () => emit("poi-click", item)
-                }
+                onClick: () => emit("poi-click", item)
               },
               [
                 h("strong", { class: "search-pois-item__name" }, item.name),
@@ -47,15 +44,11 @@ export const SearchPois = defineComponent({
           }),
           // 分页
           h(SearchPage, {
-            props: {
-              current: props.page?.current,
-              size: props.page?.size,
-              total: props.page?.total
-            },
-            on: {
-              "update:current": (current: number) => {
-                emit("update:page", { ...(props.page || {}), current });
-              }
+            current: props.page?.current,
+            size: props.page?.size,
+            total: props.page?.total,
+            "onUpdate:current": (current: number) => {
+              emit("update:page", { ...(props.page || {}), current });
             }
           })
         ]

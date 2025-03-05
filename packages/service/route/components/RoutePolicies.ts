@@ -1,5 +1,4 @@
-import { defineComponent } from "vue";
-import { h } from "~/utils/h-demi";
+import { defineComponent, h } from "vue";
 import { useState } from "../use";
 import "../styles/route-policies.scss";
 
@@ -22,9 +21,7 @@ export const RoutePolicies = defineComponent({
                   "div",
                   {
                     class: "route-policies-item" + (state.drivingPolicy == Number(key) ? " active" : ""),
-                    on: {
-                      click: () => (state.drivingPolicy = Number(key))
-                    }
+                    onClick: () => (state.drivingPolicy = Number(key))
                   },
                   value
                 )
@@ -36,9 +33,7 @@ export const RoutePolicies = defineComponent({
                   "div",
                   {
                     class: "route-policies-item" + (state.transitPolicy == Number(key) ? " active" : ""),
-                    on: {
-                      click: () => (state.transitPolicy = Number(key))
-                    }
+                    onClick: () => (state.transitPolicy = Number(key))
                   },
                   value
                 )

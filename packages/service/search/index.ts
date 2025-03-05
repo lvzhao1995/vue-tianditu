@@ -1,7 +1,6 @@
-import { defineComponent, onBeforeMount } from "vue";
+import { defineComponent, h, onBeforeMount } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { fixMapPropagation } from "~/utils/fix";
-import { h } from "~/utils/h-demi";
 import { useMethods, useState } from "./use";
 import { IconClose, IconRoute, IconSearch, SearchBox, SearchMapView, SearchPois, SearchSuggests } from "./components";
 import { TdtRoute } from "../route";
@@ -41,9 +40,7 @@ export const TdtSearch = defineComponent({
         {
           class: "tdt-search",
           // 解决地图的滚动冒泡和点击及双击冒泡
-          on: {
-            ...fixMapPropagation(state.tdtMap)
-          }
+          ...fixMapPropagation(state.tdtMap)
         },
         state.showRoute
           ? [
@@ -52,90 +49,64 @@ export const TdtSearch = defineComponent({
                 "i",
                 {
                   class: "tdt-search-route__close",
-                  on: {
-                    click: () => (state.showRoute = false)
-                  }
+                  onClick: () => (state.showRoute = false)
                 },
                 [h(IconClose)]
               )
             ]
           : [
-              h(SearchBox, {
-                props: {
-                  value: state.keyword,
+              h(
+                SearchBox,
+                {
                   modelValue: state.keyword,
-                  placeholder: props.placeholder
-                },
-                on: {
-                  input: (val: string) => {
+                  placeholder: props.placeholder,
+                  "onUpdate:modelValue": (val: string) => {
                     state.keyword = val;
                     onSearch(4, val);
                   },
-                  "update:modelValue": (val: string) => {
-                    state.keyword = val;
-                    onSearch(4, val);
-                  },
-                  search: (val: string) => onSearch(1, val)
+                  onSearch: (val: string) => onSearch(1, val)
                 },
-                scopedSlots: {
-                  default: () => [
-                    props.searchBtn &&
-                      h(
-                        "button",
-                        {
-                          class: "tdt-search-box__btn",
-                          on: {
-                            click: () => onSearch(1)
-                          }
-                        },
-                        [h(IconSearch)]
-                      ),
-                    props.routeBtn &&
-                      h(
-                        "button",
-                        {
-                          class: "tdt-search-box__btn",
-                          on: {
-                            click: () => (state.showRoute = true)
-                          }
-                        },
-                        [h(IconRoute)]
-                      )
-                  ]
-                }
-              }),
+                [
+                  props.searchBtn &&
+                    h(
+                      "button",
+                      {
+                        class: "tdt-search-box__btn",
+                        onClick: () => onSearch(1)
+                      },
+                      [h(IconSearch)]
+                    ),
+                  props.routeBtn &&
+                    h(
+                      "button",
+                      {
+                        class: "tdt-search-box__btn",
+                        onClick: () => (state.showRoute = true)
+                      },
+                      [h(IconRoute)]
+                    )
+                ]
+              ),
               h(SearchSuggests, {
-                props: {
-                  suggests: state.suggests || []
-                },
-                on: {
-                  "suggest-click": onSuggestClick
-                }
+                suggests: state.suggests || [],
+                onSuggestClick: onSuggestClick
               }),
               h(SearchPois, {
-                props: {
-                  pois: state.pois || [],
-                  page: {
-                    current: state.current,
-                    size: 10,
-                    total: state.total
-                  }
+                pois: state.pois || [],
+                page: {
+                  current: state.current,
+                  size: 10,
+                  total: state.total
                 },
-                on: {
-                  "poi-click": onPoiClick,
-                  "update:page": onPageChange
-                }
+                onPoiClick: onPoiClick,
+                "onUpdate:page": onPageChange
               }),
               h(SearchMapView, {
-                props: {
-                  pois: state.pois || [],
-                  target: state.target,
-                  content: state.content
-                },
-                on: {
-                  "poi-click": onPoiClick,
-                  "update:target": (e: any) => (state.target = e)
-                }
+                pois: state.pois || [],
+                target: state.target,
+                content: state.content,
+                onPoiClick: onPoiClick,
+                "onUpdate:target": (e: any) => (state.target = e)
               })
             ]
       );

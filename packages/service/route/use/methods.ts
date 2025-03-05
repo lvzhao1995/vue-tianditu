@@ -5,6 +5,7 @@ import { toLonLatNumberArray } from "~/utils/converter";
 export function useMethods(state: RouteState) {
   function onSearchComplete(result: T.LocalSearchResult) {
     state.pois = result.pois;
+    state.total = Number(result.count);
   }
   function onDrivingComplete(result: T.DrivingRouteResult) {
     state.drivingPlans = [];

@@ -1,8 +1,7 @@
-import { computed, defineComponent, onBeforeMount, type PropType, watch } from "vue";
+import { computed, defineComponent, h, onBeforeMount, type PropType, watch } from "vue";
 import { TdtMarker } from "~/overlay/marker";
 import { TdtInfowindow } from "~/overlay/infowindow";
 import { toLngLats, toLonLatNumberArray } from "~/utils/converter";
-import { h } from "~/utils/h-demi";
 import { useMapRoot } from "~/use/mapRoot";
 import type { LngLat } from "~/utils/types";
 
@@ -44,22 +43,16 @@ export const SearchMapView = defineComponent({
       h("div", null, [
         ...markers.value.map(item => {
           return h(TdtMarker, {
-            props: { ...item },
-            on: {
-              click: () => emit("poi-click", item.extData)
-            }
+            ...item,
+            onClick: () => emit("poi-click", item.extData)
           });
         }),
         h(TdtInfowindow, {
-          props: {
-            target: props.target,
-            content: props.content,
-            offset: [0, -30],
-            minWidth: 150
-          },
-          on: {
-            "update:target": (e: LngLat | null) => emit("update-target", e)
-          }
+          target: props.target,
+          content: props.content,
+          offset: [0, -30],
+          minWidth: 150,
+          "onUpdate:target": (e: LngLat | null) => emit("update-target", e)
         })
       ]);
   }

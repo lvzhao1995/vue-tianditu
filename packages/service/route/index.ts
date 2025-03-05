@@ -1,6 +1,5 @@
-import { defineComponent, onBeforeMount, provide } from "vue";
+import { defineComponent, h, onBeforeMount, provide } from "vue";
 import { fixMapPropagation } from "~/utils/fix";
-import { h } from "~/utils/h-demi";
 import { useInit, useState, useWatch } from "./use";
 import { RouteMapView, RoutePlans, RoutePolicies, RouteSearch, RouteTypes } from "./components";
 import "../../styles/tdt-icon.scss";
@@ -22,9 +21,7 @@ export const TdtRoute = defineComponent({
         "div",
         {
           class: "tdt-route",
-          on: {
-            ...fixMapPropagation(state.tdtMap)
-          }
+          ...fixMapPropagation(state.tdtMap)
         },
         [h(RouteTypes), h(RouteSearch), h(RoutePolicies), h(RoutePlans), h(RouteMapView)]
       );

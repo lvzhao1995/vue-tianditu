@@ -19,7 +19,7 @@ export interface SearchViewState {
   target: LngLat | null;
   content: string;
   current: number;
-  total: number | string;
+  total: number;
 }
 
 export type SearchState = SearchLocalState & SearchResultState & SearchViewState;
