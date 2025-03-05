@@ -2,9 +2,10 @@
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
       <tdt-marker
-        v-for="marker in markers"
-        :position="marker.position"
+        v-for="(marker, index) in markers"
+        :key="index"
         :extData="marker"
+        :position="marker.position"
         @click="openInfowindow"
       ></tdt-marker>
       <tdt-infowindow v-model:target="state.currentMarker.position" :minWidth="150" :offset="[0, -30]">
@@ -18,8 +19,9 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
+defineOptions({ name: "demo-infowindow" });
 const markers = [
   { title: "这是第一个标记点", position: [113.280637, 23.125178] },
   { title: "这是第二个标记点", position: [113.300637, 23.125178] },
@@ -30,16 +32,12 @@ const markers = [
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
-  currentMarker: {} as typeof markers[0]
+  currentMarker: {} as (typeof markers)[0]
 });
 
-function openInfowindow({ extData }: { extData: typeof markers[0] }) {
+function openInfowindow({ extData }: { extData: (typeof markers)[0] }) {
   state.currentMarker = { ...extData };
 }
-</script>
-
-<script lang="ts">
-export default { name: "demo-infowindow" };
 </script>
 
 <style scoped>

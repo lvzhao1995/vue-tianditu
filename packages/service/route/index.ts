@@ -1,5 +1,6 @@
-import { defineComponent, onBeforeMount, provide } from "vue-demi";
-import { h, fixMapPropagation } from "../../utils";
+import { defineComponent, onBeforeMount, provide } from "vue";
+import { fixMapPropagation } from "~/utils/fix";
+import { h } from "~/utils/h-demi";
 import { useInit, useState, useWatch } from "./use";
 import { RouteMapView, RoutePlans, RoutePolicies, RouteSearch, RouteTypes } from "./components";
 import "../../styles/tdt-icon.scss";

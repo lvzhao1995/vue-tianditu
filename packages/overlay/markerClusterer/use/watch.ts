@@ -1,6 +1,6 @@
-import { watch } from "vue-demi";
-import { toMarker, toPoint } from "../../../utils";
-import { Props } from "./";
+import { watch } from "vue";
+import { toMarker, toPoint } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useWatch({ props, instance }: { props: Props; instance: T.MarkerClusterer }) {
   watch(
@@ -15,7 +15,9 @@ export function useWatch({ props, instance }: { props: Props; instance: T.Marker
     () => props.markers,
     val => {
       instance.clearMarkers();
-      val?.length && instance.addMarkers(val.map(toMarker));
+      if (val?.length) {
+        instance.addMarkers(val.map(toMarker));
+      }
     }
   );
   watch(

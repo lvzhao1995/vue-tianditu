@@ -1,18 +1,19 @@
 <template>
-  <button @click="state.draggable = !state.draggable">draggable:{{ state.draggable }}</button>
-  <button @click="state.visible = !state.visible">visible:{{ state.visible }}</button>
+  <button class="demo-button" @click="state.draggable = !state.draggable">draggable:{{ state.draggable }}</button>
+  <button class="demo-button" @click="state.visible = !state.visible">visible:{{ state.visible }}</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
-      <tdt-marker :position="state.marker1" :draggable="state.draggable" :visible="state.visible"></tdt-marker>
-      <tdt-marker :position="state.marker2" :draggable="state.draggable" :icon="state.icon"></tdt-marker>
+      <tdt-marker :draggable="state.draggable" :position="state.marker1" :visible="state.visible"></tdt-marker>
+      <tdt-marker :draggable="state.draggable" :icon="state.icon" :position="state.marker2"></tdt-marker>
     </tdt-map>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { withBase } from "vitepress";
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
+defineOptions({ name: "demo-marker" });
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
@@ -26,10 +27,6 @@ const state = reactive({
     iconAnchor: [9, 26]
   }
 });
-</script>
-
-<script lang="ts">
-export default { name: "demo-marker" };
 </script>
 
 <style scoped>

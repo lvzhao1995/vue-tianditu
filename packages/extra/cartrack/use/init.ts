@@ -1,9 +1,9 @@
-import { toLngLats } from "../../../utils";
-import { Props, Emit } from ".";
+import { toLngLats } from "~/utils/converter";
+import type { Emit, Props } from ".";
 
 export function useInit(props: Props, emit: Emit, map: T.Map) {
   const { interval, speed, dynamicLine, Datas, carstyle, polylinestyle } = props;
-  const instance = new T.CarTrack(map, {
+  return new T.CarTrack(map, {
     interval,
     speed,
     dynamicLine,
@@ -14,5 +14,4 @@ export function useInit(props: Props, emit: Emit, map: T.Map) {
       emit("passOneNode", [lnglat.lng, lnglat.lat], index, length);
     }
   });
-  return instance;
 }

@@ -1,4 +1,7 @@
-module.exports = {
+import { defineConfig } from "vitepress";
+import path from "path";
+
+export default defineConfig({
   base: "/vue-tianditu/",
   lang: "zh-CN",
   title: "VueTianditu",
@@ -6,10 +9,21 @@ module.exports = {
   vite: {
     define: {
       HTMLElement: "Object"
+    },
+    resolve: {
+      alias: {
+        "@": path.resolve(import.meta.dirname, "../../src"),
+        "~": path.resolve(import.meta.dirname, "../../packages")
+      }
     }
   },
   themeConfig: {
-    repo: "SoulLyoko/vue-tianditu/",
+    socialLinks: [
+      {
+        icon: "github",
+        link: "https://github.com/SoulLyoko/vue-tianditu"
+      }
+    ],
     nav: [
       {
         text: "v2.x",
@@ -23,7 +37,7 @@ module.exports = {
         { text: "开始", link: "/" },
         {
           text: "地图",
-          children: [
+          items: [
             { text: "基础地图", link: "/map/map" },
             { text: "控件", link: "/map/control" },
             { text: "地图工具", link: "/mousetool/mousetool" }
@@ -31,7 +45,7 @@ module.exports = {
         },
         {
           text: "图层",
-          children: [
+          items: [
             { text: "自定义图层", link: "/tilelayer/tilelayer" },
             { text: "天地图矢量图层", link: "/tilelayer/tilelayer-tdt" },
             { text: "WMS服务图层", link: "/tilelayer/tilelayer-wms" },
@@ -40,7 +54,7 @@ module.exports = {
         },
         {
           text: "覆盖物",
-          children: [
+          items: [
             { text: "文本标注", link: "/overlay/label" },
             { text: "点标注", link: "/overlay/marker" },
             { text: "信息窗口", link: "/overlay/infowindow" },
@@ -54,16 +68,16 @@ module.exports = {
         },
         {
           text: "服务",
-          children: [
+          items: [
             { text: "搜索", link: "/service/search" },
             { text: "导航", link: "/service/route" }
           ]
         },
         {
           text: "扩展",
-          children: [{ text: "车辆轨迹", link: "/extra/car-track" }]
+          items: [{ text: "车辆轨迹", link: "/extra/car-track" }]
         }
       ]
     }
   }
-};
+});

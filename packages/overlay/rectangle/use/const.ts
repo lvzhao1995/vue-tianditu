@@ -1,5 +1,5 @@
-import { PropType } from "vue-demi";
-import { DefineProps, DefineEmits } from "../../../types";
+import type { PropType } from "vue";
+import type { Bounds, DefineEmits, DefineProps } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 矩形边线颜色 */
@@ -20,7 +20,7 @@ export const EXTRA_PROPS = {
   /** 启用/禁用编辑功能 */
   edit: { type: Boolean, default: false },
   /** 矩形地理范围 */
-  bounds: { type: Array as unknown as PropType<VT.Bounds>, default: () => [] },
+  bounds: { type: Array as unknown as PropType<Bounds>, default: () => [] },
   /** 是否可见 */
   visible: { type: Boolean, default: true },
   /** 自定义属性 */

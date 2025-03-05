@@ -1,5 +1,5 @@
-import { ToolInstances } from "../types";
-import { Emit } from "./";
+import type { ToolInstances } from "../types";
+import type { Emit } from "./";
 
 export function useEvent({ emit, instances }: { emit: Emit; instances: ToolInstances }): void {
   instances.markTool?.addEventListener("mouseup", e => emit("mark-mouseup", e));

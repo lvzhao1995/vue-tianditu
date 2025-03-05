@@ -1,6 +1,11 @@
-import { PropType } from "vue-demi";
-import { DefineEmits, DefineProps } from "../../../types";
-import { Props as MarkerProps } from "../../marker/use/const";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps, Point } from "~/utils/types";
+import type { Props as MarkerProps } from "../../marker/use/const";
+
+export type MarkerClustererStyle = Omit<T.MarkerClustererStyle, "offset"> & {
+  /** 聚合图标偏移量 */
+  offset?: Point;
+};
 
 export const NATIVE_PROPS = {
   /** 要聚合的标注点数组 */
@@ -10,7 +15,7 @@ export const NATIVE_PROPS = {
   /** 最大的聚合级别，大于该级别就不进行聚合 */
   maxZoom: { type: Number },
   /** 自定义聚合后的图标风格 */
-  styles: { type: Array as PropType<VT.MarkerClustererStyle[]> }
+  styles: { type: Array as PropType<MarkerClustererStyle[]> }
 };
 
 export const EXTRA_PROPS = {};

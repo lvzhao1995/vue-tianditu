@@ -3,8 +3,8 @@
     <tdt-map :center="state.center" :zoom="state.zoom">
       <tdt-cloud-marker-collection
         :lnglats="state.lnglats"
-        color="blue"
         SizeType="small"
+        color="blue"
         @click="onClick"
       ></tdt-cloud-marker-collection>
       <tdt-infowindow v-model:target="state.target" :content="state.content"></tdt-infowindow>
@@ -13,8 +13,10 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 import dataCollection from "./data";
+
+defineOptions({ name: "demo-cloud-marker-collection" });
 
 const state = reactive({
   center: [108.95, 34.27],
@@ -29,10 +31,6 @@ function onClick(e: any) {
   state.target = e.layer;
   state.content = `[${e.lnglat.lng}, ${e.lnglat.lat}]`;
 }
-</script>
-
-<script lang="ts">
-export default { name: "demo-cloud-marker-collection" };
 </script>
 
 <style scoped>

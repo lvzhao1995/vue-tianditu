@@ -1,8 +1,9 @@
-import { defineComponent, onBeforeMount } from "vue-demi";
-import { useMapRoot } from "../../use";
-import { h, fixMapPropagation } from "../../utils";
-import { useState, useMethods } from "./use";
-import { SearchBox, SearchSuggests, SearchPois, SearchMapView, IconSearch, IconRoute, IconClose } from "./components";
+import { defineComponent, onBeforeMount } from "vue";
+import { useMapRoot } from "~/use/mapRoot";
+import { fixMapPropagation } from "~/utils/fix";
+import { h } from "~/utils/h-demi";
+import { useMethods, useState } from "./use";
+import { IconClose, IconRoute, IconSearch, SearchBox, SearchMapView, SearchPois, SearchSuggests } from "./components";
 import { TdtRoute } from "../route";
 import "./styles/tdt-search.scss";
 import "../../styles/tdt-icon.scss";
@@ -15,8 +16,11 @@ export const TdtSearch = defineComponent({
     routeBtn: { type: Boolean, default: true }
   },
   emits: {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "poi-click": (poi: T.LocalSearchPoi) => true,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "suggest-click": (suggest: T.LocalSearchSuggest) => true,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "search-complete": (result: T.LocalSearchResult) => true
   },
   setup(props, { emit }) {

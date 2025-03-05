@@ -1,6 +1,6 @@
-import { watch } from "vue-demi";
-import { toIcon, toLngLat } from "../../../utils";
-import { Props } from "./";
+import { watch } from "vue";
+import { toIcon, toLngLat } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useWatch({ props, instance }: { props: Props; instance: T.Marker }) {
   watch(

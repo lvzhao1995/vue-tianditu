@@ -5,8 +5,8 @@
   </details>
 </template>
 
-<script lang="ts">
-export default { name: "code-details" };
+<script lang="ts" setup>
+defineOptions({ name: "code-details" });
 </script>
 
 <style scoped>

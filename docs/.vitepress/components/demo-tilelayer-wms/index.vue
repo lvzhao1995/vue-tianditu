@@ -7,8 +7,11 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
+defineOptions({
+  name: "demo-tilelayer-wms"
+});
 const state = reactive({
   center: [116.40769, 39.89945],
   zoom: 6,
@@ -21,10 +24,6 @@ const state = reactive({
     format: "image/png"
   }
 });
-</script>
-
-<script lang="ts">
-export default { name: "demo-tilelayer-wms" };
 </script>
 
 <style scoped>

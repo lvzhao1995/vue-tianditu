@@ -9,16 +9,15 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
+defineOptions({
+  name: "demo-route"
+});
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11
 });
-</script>
-
-<script lang="ts">
-export default { name: "demo-route" };
 </script>
 
 <style scoped>

@@ -1,6 +1,7 @@
-import { defineComponent, onBeforeMount, onUnmounted } from "vue-demi";
-import { useMapRoot, useEvent } from "../../use";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { defineComponent, onBeforeMount, onUnmounted } from "vue";
+import { useMapRoot } from "~/use/mapRoot";
+import { useEvent } from "~/use/event";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
 
 export const TdtMarker = defineComponent({
   name: "TdtMarker",

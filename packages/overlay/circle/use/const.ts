@@ -1,5 +1,5 @@
-import { PropType } from "vue-demi";
-import { DefineProps, DefineEmits } from "../../../types";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps, LngLat } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 圆边线颜色 */
@@ -20,7 +20,7 @@ export const EXTRA_PROPS = {
   /** 启用/禁用编辑功能 */
   edit: { type: Boolean, default: false },
   /** 圆的中心点 */
-  center: { type: Array as PropType<VT.LngLat>, default: () => [0, 0] },
+  center: { type: Array as unknown as PropType<LngLat>, default: () => [0, 0] },
   /** 圆的半径 */
   radius: { type: Number, default: 0 },
   /** 是否可见 */

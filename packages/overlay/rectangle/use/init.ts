@@ -1,9 +1,9 @@
-import { toBounds } from "../../../utils";
-import { Props } from "./";
+import { toBounds } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useInit(props: Props) {
   const { bounds, color, weight, opacity, lineStyle, fillColor, fillOpacity } = props;
-  const instance = new T.Rectangle(toBounds(bounds), {
+  return new T.Rectangle(toBounds(bounds), {
     color,
     weight,
     opacity,
@@ -11,5 +11,4 @@ export function useInit(props: Props) {
     fillColor,
     fillOpacity
   });
-  return instance;
 }

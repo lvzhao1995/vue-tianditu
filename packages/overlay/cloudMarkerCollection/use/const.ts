@@ -1,5 +1,5 @@
-import { PropType } from "vue-demi";
-import { DefineEmits, DefineProps } from "../../../types";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps, LngLats } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 海量点的预设形状 */
@@ -12,7 +12,7 @@ export const NATIVE_PROPS = {
 
 export const EXTRA_PROPS = {
   /** 在地图上展示的点坐标集合 */
-  lnglats: { type: Array as PropType<VT.LngLat[]>, default: () => [] }
+  lnglats: { type: Array as PropType<LngLats>, default: () => [] }
 };
 
 export const NATIVE_EVENTS: T.CloudMarkerCollectionEvents = {

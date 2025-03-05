@@ -1,7 +1,8 @@
-import { defineComponent, onMounted, onUnmounted, computed } from "vue-demi";
-import { useMapRoot, useEvent } from "../../use";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
-import { h } from "../../utils";
+import { computed, defineComponent, onMounted, onUnmounted } from "vue";
+import { useMapRoot } from "~/use/mapRoot";
+import { useEvent } from "~/use/event";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
+import { h } from "~/utils/h-demi";
 
 export const TdtInfowindow = defineComponent({
   name: "TdtInfowindow",
@@ -36,7 +37,9 @@ export const TdtInfowindow = defineComponent({
     });
 
     function emitted(event: string) {
-      event === "close" && emit("update:target", null);
+      if (event === "close") {
+        emit("update:target", null);
+      }
     }
 
     return () => contentRef.value;

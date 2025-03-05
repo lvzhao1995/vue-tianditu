@@ -1,5 +1,5 @@
-import { toLngLat } from "../../utils";
-import { Props } from "./";
+import { toLngLat } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useInit(props: Props, dom?: HTMLElement) {
   const { mid, projection, minZoom, maxZoom, center, zoom } = props;

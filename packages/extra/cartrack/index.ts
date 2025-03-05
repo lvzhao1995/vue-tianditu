@@ -1,6 +1,6 @@
-import { defineComponent, watch, onBeforeMount, onUnmounted, getCurrentInstance, isVue2 } from "vue-demi";
-import { useMapRoot } from "../../use";
-import { useInit, PROPS, EVENTS } from "./use";
+import { defineComponent, onBeforeMount, onUnmounted, watch } from "vue";
+import { useMapRoot } from "~/use/mapRoot";
+import { EVENTS, PROPS, useInit } from "./use";
 
 export const TdtCarTrack = defineComponent({
   name: "TdtCarTrack",
@@ -11,12 +11,6 @@ export const TdtCarTrack = defineComponent({
       onUnmounted(() => tdtComponent?.clear());
 
       expose?.({ start, pause, stop, clear });
-      if (isVue2) {
-        const vm = getCurrentInstance()?.proxy as any;
-        vm.star = start;
-        vm.paus = pause;
-        vm.sto = stop;
-      }
 
       const tdtMap = await useMapRoot();
       let tdtComponent: T.CarTrack | null = null;
@@ -35,12 +29,15 @@ export const TdtCarTrack = defineComponent({
       function start() {
         tdtComponent?.start();
       }
+
       function pause() {
         tdtComponent?.pause();
       }
+
       function stop() {
         tdtComponent?.stop();
       }
+
       function clear() {
         tdtComponent?.clear();
       }

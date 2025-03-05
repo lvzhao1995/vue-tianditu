@@ -1,5 +1,6 @@
-import { inject, Ref } from "vue-demi";
-import { MapEmitter } from "../types";
+import { inject, type Ref } from "vue";
+import type { Emitter } from "mitt";
+import type { MapEvents } from "~/utils/emitter";
 
 /**
  * 获取根地图实例
@@ -7,7 +8,7 @@ import { MapEmitter } from "../types";
 export function useMapRoot(): Promise<T.Map> {
   return new Promise(resolve => {
     const mapRoot = inject<Ref<T.Map>>("mapRoot");
-    const mapEmitter = inject<MapEmitter>("mapEmitter");
+    const mapEmitter = inject<Emitter<MapEvents>>("mapEmitter");
     if (mapRoot?.value) {
       resolve(mapRoot?.value);
     } else {

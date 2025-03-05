@@ -1,16 +1,16 @@
-import { h as hDemi, VNode as VNodeDemi, isVue2 } from "vue-demi";
+import { h as hDemi, type VNode as VNodeDemi } from "vue";
 
 interface Options {
-  attrs: Object;
-  props?: Object;
-  domProps?: Object;
-  on?: Object;
+  attrs: object;
+  props?: object;
+  domProps?: object;
+  on?: object;
 }
 
 /** VNode.elm in Vue2 */
 type VNode = VNodeDemi & { el?: HTMLElement; elm?: HTMLElement };
 
-const adaptOnsV3 = (ons: Object) => {
+const adaptOnsV3 = (ons: object) => {
   if (!ons) return null;
   return Object.entries(ons).reduce((ret, [key, handler]) => {
     key = key.charAt(0).toUpperCase() + key.slice(1);
@@ -20,8 +20,6 @@ const adaptOnsV3 = (ons: Object) => {
 };
 
 export const h = (type: string | any, options?: Options | any, chidren?: any) => {
-  if (isVue2) return hDemi(type, options, chidren) as VNode;
-
   const { attrs, props, domProps, on, scopedSlots, ...extraOptions } = options ?? {};
   const ons = adaptOnsV3(on);
   const params = {

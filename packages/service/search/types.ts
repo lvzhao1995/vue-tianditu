@@ -1,4 +1,5 @@
 import { TdtMarker } from "../../components";
+import type { LngLat } from "~/utils/types";
 
 export interface SearchLocalState {
   tdtMap: T.Map | null;
@@ -8,12 +9,14 @@ export interface SearchLocalState {
   showRoute: boolean;
 }
 
-export interface SearchResultState
-  extends Pick<T.LocalSearchResult, "pois" | "statistics" | "area" | "suggests" | "prompt" | "lineData"> {}
+export type SearchResultState = Pick<
+  T.LocalSearchResult,
+  "pois" | "statistics" | "area" | "suggests" | "prompt" | "lineData"
+>;
 
 export interface SearchViewState {
   markers: TdtMarker["$props"][];
-  target: VT.LngLat | null;
+  target: LngLat | null;
   content: string;
   current: number;
   total: number | string;

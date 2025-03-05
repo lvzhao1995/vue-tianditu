@@ -1,5 +1,5 @@
-import { PropType } from "vue";
-import { DefineEmits, DefineProps } from "../../../types";
+import type { PropType } from "vue";
+import type { Bounds, DefineEmits, DefineProps } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 此图层的最低缩放级别 */
@@ -13,7 +13,7 @@ export const NATIVE_PROPS = {
   /** 图层的显示顺序 */
   zIndex: { type: Number },
   /** 设置指定范围内显示瓦片 */
-  bounds: { type: Array as PropType<VT.Bounds>, default: () => [] },
+  bounds: { type: Array as PropType<Bounds>, default: () => [] },
   /** 图层服务地址 */
   url: { type: String, default: "" }
 };

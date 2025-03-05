@@ -1,17 +1,21 @@
 <template>
-  <button @click="state.visible = !state.visible">显示自定义控件:{{ state.visible }}</button>
-  <button @click="state.copyright = !state.copyright">显示默认版权控件:{{ state.copyright }}</button>
-  <div class="mapDiv" :class="state.copyright ? '' : 'hide-copyright'">
-    <tdt-map :center="state.center" :zoom="state.zoom" :controls="state.controls">
-      <tdt-control position="topright" :visible="state.visible">
-        <button>自定义控件</button>
+  <button class="demo-button" @click="state.visible = !state.visible">显示自定义控件:{{ state.visible }}</button>
+  <button class="demo-button" @click="state.copyright = !state.copyright">
+    显示默认版权控件:{{ state.copyright }}
+  </button>
+  <div :class="state.copyright ? '' : 'hide-copyright'" class="mapDiv">
+    <tdt-map :center="state.center" :controls="state.controls" :zoom="state.zoom">
+      <tdt-control :visible="state.visible" position="topright">
+        <button class="demo-button">自定义控件</button>
       </tdt-control>
     </tdt-map>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
+
+defineOptions({ name: "demo-control" });
 
 const state = reactive({
   center: [113.280637, 23.125178],
@@ -58,7 +62,7 @@ const state = reactive({
     {
       name: "Copyright",
       id: "custom",
-      content: `<div style="height:40px"><button>自定义的版权控件</button></div>`,
+      content: `<div style="height:40px"><button class="demo-button">自定义的版权控件</button></div>`,
       position: "bottomleft",
       bounds: [
         [113.52791, 23.21989],
@@ -71,16 +75,13 @@ const state = reactive({
 });
 </script>
 
-<script lang="ts">
-export default { name: "demo-control" };
-</script>
-
 <style scoped>
 .mapDiv {
   width: 100%;
   height: 300px;
 }
-::v-deep.hide-copyright .tdt-control-copyright.tdt-control > div:not(.tdt-control-copyright) {
+
+.hide-copyright :deep(.tdt-control-copyright.tdt-control > div:not(.tdt-control-copyright)) {
   display: none;
 }
 </style>

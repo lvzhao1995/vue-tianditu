@@ -1,5 +1,5 @@
-import { PropType } from "vue-demi";
-import { DefineEmits, DefineProps } from "../../../types";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps, LngLats } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 折线颜色 */
@@ -16,7 +16,7 @@ export const EXTRA_PROPS = {
   /** 启用/禁用编辑功能 */
   edit: { type: Boolean, default: false },
   /** 坐标数组 */
-  path: { type: Array as unknown as PropType<VT.LngLat[]>, default: () => [] },
+  path: { type: Array as unknown as PropType<LngLats>, default: () => [] },
   /** 是否可见 */
   visible: { type: Boolean, default: true },
   /** 自定义属性 */

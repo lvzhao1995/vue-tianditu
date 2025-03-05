@@ -1,22 +1,23 @@
 <template>
-  <button @click="state.edit = !state.edit">editable:{{ state.edit }}</button>
-  <button @click="state.visible = !state.visible">visible:{{ state.visible }}</button>
+  <button @click="state.edit = !state.edit" class="demo-button">editable:{{ state.edit }}</button>
+  <button @click="state.visible = !state.visible" class="demo-button">visible:{{ state.visible }}</button>
   <div class="mapDiv">
     <tdt-map :center="state.center" :zoom="state.zoom">
       <tdt-polyline
-        :path="state.path"
-        color="black"
-        :opacity="1"
         :edit="state.edit"
+        :opacity="1"
+        :path="state.path"
         :visible="state.visible"
+        color="black"
       ></tdt-polyline>
     </tdt-map>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
+defineOptions({ name: "demo-polyline" });
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11,
@@ -28,10 +29,6 @@ const state = reactive({
   edit: false,
   visible: true
 });
-</script>
-
-<script lang="ts">
-export default { name: "demo-polyline" };
 </script>
 
 <style scoped>

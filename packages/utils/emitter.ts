@@ -1,6 +1,6 @@
 import mitt from "mitt";
 
-type MapEvents = {
+export type MapEvents = {
   mapInit: T.Map;
 };
 

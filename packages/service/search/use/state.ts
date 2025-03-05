@@ -1,5 +1,5 @@
-import { reactive } from "vue-demi";
-import { SearchLocalState, SearchResultState, SearchViewState } from "../types";
+import { reactive } from "vue";
+import type { SearchLocalState, SearchResultState, SearchViewState } from "../types";
 
 export function useState() {
   const searchLocalState: SearchLocalState = {
@@ -24,7 +24,5 @@ export function useState() {
     current: 1,
     total: 0
   };
-  const state = reactive({ ...searchLocalState, ...searchResultState, ...searchViewState });
-
-  return state;
+  return reactive({ ...searchLocalState, ...searchResultState, ...searchViewState });
 }

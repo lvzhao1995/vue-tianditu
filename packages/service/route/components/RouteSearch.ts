@@ -1,7 +1,8 @@
-import { defineComponent } from "vue-demi";
-import { SearchBox, SearchPois } from "../../search/components";
-import { h } from "../../../utils";
-import { useState, useMethods } from "../use";
+import { defineComponent } from "vue";
+import { SearchBox } from "~/service/search/components/SearchBox";
+import { SearchPois } from "~/service/search/components/SearchPois";
+import { h } from "~/utils/h-demi";
+import { useMethods, useState } from "../use";
 
 export const RouteSearch = defineComponent({
   setup() {

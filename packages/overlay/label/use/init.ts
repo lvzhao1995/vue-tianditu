@@ -1,12 +1,11 @@
-import { toLngLat, toPoint } from "../../../utils";
-import { Props } from "./";
+import { toLngLat, toPoint } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useInit(props: Props) {
   const { position, offset, text } = props;
-  const instance = new T.Label({
+  return new T.Label({
     position: toLngLat(position),
     offset: toPoint(offset),
     text
   });
-  return instance;
 }

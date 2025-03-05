@@ -1,5 +1,5 @@
-import { PropType } from "vue-demi";
-import { DefineEmits, DefineProps } from "../../../types";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps, LngLat, LngLats } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 从当前节点到下一节点的时间间隔 */
@@ -9,7 +9,7 @@ export const NATIVE_PROPS = {
   /** 为true时轨迹线随车移动，而变化。false时，车辆运动轨迹提前画好且无动态变化 */
   dynamicLine: { type: Boolean, default: false },
   /** 数据来源 */
-  Datas: { type: Array as PropType<VT.LngLats>, default: () => [] },
+  Datas: { type: Array as PropType<LngLats>, default: () => [] },
   /** 车辆样式 */
   carstyle: {
     type: Object as PropType<T.CarOverlayOptions["carstyle"]>
@@ -34,7 +34,8 @@ export const EXTRA_EVENTS = {
    * @param index 节点序号
    * @param length 总节点数量
    */
-  passOneNode: (lnglat: VT.LngLat, index: number, length: number) => true
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  passOneNode: (lnglat: LngLat, index: number, length: number) => true
 };
 
 export const PROPS = { ...NATIVE_PROPS, ...EXTRA_PROPS };

@@ -1,5 +1,6 @@
-import { RouteState } from "../types";
-import { PageProps } from "../../search/components";
+import type { RouteState } from "../types";
+import type { PageProps } from "../../search/components";
+import { toLonLatNumberArray } from "~/utils/converter";
 
 export function useMethods(state: RouteState) {
   function onSearchComplete(result: T.LocalSearchResult) {
@@ -23,7 +24,7 @@ export function useMethods(state: RouteState) {
   }
   function onPoiClick(poi: T.LocalSearchPoi) {
     state[`${state.poiType}Keyword`] = poi.name;
-    state[`${state.poiType}Marker`] = poi.lonlat.split(" ").map(Number);
+    state[`${state.poiType}Marker`] = toLonLatNumberArray(poi.lonlat);
     state.pois = [];
   }
   function onPageChange(page: PageProps) {

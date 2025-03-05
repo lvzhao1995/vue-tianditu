@@ -1,9 +1,10 @@
 import mitt from "mitt";
-import { defineComponent, ref, provide, onMounted } from "vue-demi";
-import { MapEmitEvents } from "../types";
-import { useApiLoader, useEvent } from "../use";
-import { useInit, useWatch, useControls, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
-import { h } from "../utils";
+import { defineComponent, onMounted, provide, ref } from "vue";
+import type { MapEvents } from "~/utils/emitter";
+import { useApiLoader } from "~/use/apiLoader";
+import { useEvent } from "~/use/event";
+import { EVENTS, NATIVE_EVENTS, PROPS, useControls, useInit, useWatch } from "./use";
+import { h } from "~/utils/h-demi";
 
 export const TdtMap = defineComponent({
   name: "TdtMap",
@@ -11,7 +12,7 @@ export const TdtMap = defineComponent({
   emits: EVENTS,
   setup(props, { emit, slots }) {
     const tdtMap = ref<T.Map>();
-    const mapEmitter = mitt<MapEmitEvents>();
+    const mapEmitter = mitt<MapEvents>();
     provide("mapRoot", tdtMap);
     provide("mapEmitter", mapEmitter);
 

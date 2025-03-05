@@ -1,13 +1,12 @@
-import { toLngLats } from "../../../utils";
-import { Props } from "./";
+import { toLngLats } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useInit(props: Props) {
   const { path, color, weight, opacity, lineStyle } = props;
-  const instance = new T.Polyline(toLngLats(path), {
+  return new T.Polyline(toLngLats(path), {
     color,
     weight,
     opacity,
     lineStyle
   });
-  return instance;
 }

@@ -1,6 +1,6 @@
-import { defineComponent, computed, isVue2 } from "vue-demi";
+import { computed, defineComponent } from "vue";
 import { IconClose } from "./icons";
-import { h, slot } from "../../../utils";
+import { h, slot } from "~/utils/h-demi";
 import "../styles/search-box.scss";
 
 export const SearchBox = defineComponent({
@@ -15,9 +15,12 @@ export const SearchBox = defineComponent({
     routeBtn: { type: Boolean, default: true }
   },
   emits: {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     input: (e: string) => true,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "update:modelValue": (e: string) => true,
     // 点击搜索按钮或回车时触发
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     search: (e: string) => true
   },
   setup(props, { emit, slots }) {
@@ -25,10 +28,10 @@ export const SearchBox = defineComponent({
 
     const keyword = computed({
       get() {
-        return isVue2 ? props.value : props.modelValue;
+        return props.modelValue;
       },
       set(val: string) {
-        isVue2 ? emit("input", val) : emit("update:modelValue", val);
+        emit("update:modelValue", val);
       }
     });
 

@@ -1,5 +1,6 @@
-import { PropType } from "vue-demi";
-import { DefineEmits, DefineProps } from "../../types";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps } from "~/utils/types";
+import type { Point } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 控件的停靠位置 */
@@ -8,7 +9,7 @@ export const NATIVE_PROPS = {
 
 export const OTHER_PROPS = {
   /** 设置控件停靠的偏移量 */
-  offset: { type: Array as unknown as PropType<VT.Point> },
+  offset: { type: Array as unknown as PropType<Point> },
   /** 是否可见 */
   visible: { type: Boolean, default: true }
 };

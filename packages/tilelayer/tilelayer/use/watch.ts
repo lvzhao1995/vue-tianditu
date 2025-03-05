@@ -1,5 +1,5 @@
-import { watch } from "vue-demi";
-import { Props } from "./";
+import { watch } from "vue";
+import type { Props } from "./";
 
 export function useWatch({ props, instance }: { props: Props; instance: T.TileLayer }) {
   watch(

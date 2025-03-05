@@ -3,15 +3,15 @@
     <button @click="openTool('markTool')">标点</button>
     <TdtMap
       :center="state.center"
-      :zoom="state.zoom"
       :controls="['Zoom', 'MapType']"
       :load-config="{ tk: '7f013d0186775b063d6a046977bbefc6' }"
+      :zoom="state.zoom"
     >
       <TdtMarker
         v-for="marker in state.markers"
         :key="marker.name"
-        :position="marker.position"
         :ext-data="marker.name"
+        :position="marker.position"
         @click="openInfoWindow"
       ></TdtMarker>
       <TdtLabel :position="state.center" text="123"></TdtLabel>
@@ -21,8 +21,8 @@
       <TdtCircle :center="state.center" :radius="1000" ext-data="circle" @click="openInfoWindow"></TdtCircle>
       <TdtInfowindow
         v-model:target="state.infowindow.target"
-        :content="state.infowindow.content"
         :close-on-click="true"
+        :content="state.infowindow.content"
       ></TdtInfowindow>
       <TdtMousetool ref="mousetoolRef" :mark-tool="{ follow: true }"></TdtMousetool>
       <TdtControl position="topleft">
@@ -33,20 +33,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from "vue-demi";
+import { defineComponent, reactive, ref } from "vue";
 import {
+  TdtCircle,
+  TdtControl,
+  TdtInfowindow,
+  TdtLabel,
   TdtMap,
   TdtMarker,
-  TdtLabel,
-  TdtPolyline,
-  TdtPolygon,
-  TdtRectangle,
-  TdtCircle,
-  TdtInfowindow,
   TdtMousetool,
-  TdtControl,
+  TdtPolygon,
+  TdtPolyline,
+  TdtRectangle,
   TdtSearch
 } from "~/index";
+import type { LngLat, LngLats } from "~/utils/types";
 
 export default defineComponent({
   components: {
@@ -64,27 +65,27 @@ export default defineComponent({
   },
   setup() {
     const state = reactive({
-      center: [113.280637, 23.125178],
+      center: [113.280637, 23.125178] as LngLat,
       zoom: 12,
       polylinePath: [
         [113.280637, 23.125178],
         [113.290637, 23.135178]
-      ],
+      ] as LngLats,
       polygonPath: [
         [113.280637, 23.125178],
         [113.290637, 23.125178],
         [113.290637, 23.115178],
         [113.280637, 23.115178]
-      ],
+      ] as LngLats,
       bounds: [
         [113.280637, 23.125178],
         [113.270637, 23.115178]
       ],
       markers: [
-        { name: "marker1", position: [113.280637, 23.125178] },
-        { name: "marker2", position: [113.290637, 23.125178] },
-        { name: "marker3", position: [113.290637, 23.115178] },
-        { name: "marker4", position: [113.280637, 23.115178] }
+        { name: "marker1", position: [113.280637, 23.125178] as LngLat },
+        { name: "marker2", position: [113.290637, 23.125178] as LngLat },
+        { name: "marker3", position: [113.290637, 23.115178] as LngLat },
+        { name: "marker4", position: [113.280637, 23.115178] as LngLat }
       ],
       infowindow: {
         target: null as any,
@@ -99,6 +100,7 @@ export default defineComponent({
     }
 
     const mousetoolRef = ref();
+
     function openTool(toolName: string) {
       mousetoolRef.value?.open(toolName);
     }

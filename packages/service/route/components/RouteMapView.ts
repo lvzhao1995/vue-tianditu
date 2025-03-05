@@ -1,6 +1,7 @@
-import { defineComponent } from "vue-demi";
-import { TdtMarker, TdtPolyline } from "../../../components";
-import { h } from "../../../utils";
+import { defineComponent } from "vue";
+import { TdtMarker } from "~/overlay/marker";
+import { TdtPolyline } from "~/overlay/polyline";
+import { h } from "~/utils/h-demi";
 import { useState } from "../use";
 
 export const RouteMapView = defineComponent({
@@ -10,7 +11,7 @@ export const RouteMapView = defineComponent({
     return () =>
       h("span", null, [
         // 起点
-        state.startMarker.length
+        state.startMarker?.length
           ? h(TdtMarker, {
               props: {
                 position: state.startMarker,
@@ -23,7 +24,7 @@ export const RouteMapView = defineComponent({
             })
           : "",
         // 终点
-        state.endMarker.length
+        state.endMarker?.length
           ? h(TdtMarker, {
               props: {
                 position: state.endMarker,

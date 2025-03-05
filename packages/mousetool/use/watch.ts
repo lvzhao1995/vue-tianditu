@@ -1,6 +1,6 @@
-import { watch } from "vue-demi";
-import { ToolInstances } from "../types";
-import { Props } from "./";
+import { watch } from "vue";
+import type { ToolInstances } from "../types";
+import type { Props } from "./";
 
 export function useWatch({ props, instances }: { props: Props; instances: ToolInstances }) {
   watch(
@@ -10,7 +10,9 @@ export function useWatch({ props, instances }: { props: Props; instances: ToolIn
       if (typeof val === "string") {
         instances.markTool?.setPointImage(val);
       } else {
-        val?.iconUrl && instances.markTool?.setPointImage(val?.iconUrl);
+        if (val?.iconUrl) {
+          instances.markTool?.setPointImage(val?.iconUrl);
+        }
       }
     }
   );

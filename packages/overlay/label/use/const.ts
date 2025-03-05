@@ -1,13 +1,13 @@
-import { PropType } from "vue-demi";
-import { DefineEmits, DefineProps } from "../../../types";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps, LngLat, Point } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 文本标注的内容 */
   text: { type: String, default: "" },
   /** 文本标注的位置偏移值 */
-  offset: { type: Array as unknown as PropType<VT.Point>, default: () => [0, 0] },
+  offset: { type: Array as unknown as PropType<Point>, default: () => [0, 0] },
   /** 文本标注的地理位置 */
-  position: { type: Array as unknown as PropType<VT.LngLat>, default: () => [0, 0] }
+  position: { type: Array as unknown as PropType<LngLat>, default: () => [0, 0] }
 };
 
 export const EXTRA_PROPS = {

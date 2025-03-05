@@ -1,6 +1,6 @@
-import { useMapRoot } from "../../../use";
-import { RouteState } from "../types";
-import { useMethods } from ".";
+import { useMapRoot } from "~/use/mapRoot";
+import type { RouteState } from "../types";
+import { useMethods } from "./methods";
 
 export async function useInit(state: RouteState) {
   const { onSearchComplete, onDrivingComplete, onTransitComplete } = useMethods(state);

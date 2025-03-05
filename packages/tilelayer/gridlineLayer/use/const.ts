@@ -1,5 +1,5 @@
-import { PropType } from "vue-demi";
-import { DefineEmits, DefineProps } from "../../../types";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 设置格网图层的网格大小，单位是像素。default:256 */

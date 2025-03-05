@@ -1,6 +1,6 @@
-const fs = require("fs");
-const execa = require("execa");
-const { prompt } = require("enquirer");
+import fs from "node:fs";
+import { execa } from "execa";
+import { prompt } from "enquirer";
 
 async function main() {
   console.log("Choicing version...");

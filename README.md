@@ -126,47 +126,54 @@ import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
 由于API是通过`useApiLoader`异步加载的，所以需要在API加载完成后才能使用天地图原生的API，有以下三种方式:
 
 - 不使用组件，只使用API加载器
+
 ```html
 <template>
   <div id="mapContainer"></div>
 </template>
 
 <script>
-import { useApiLoader } from "vue-tianditu";
-// 加载API
-useApiLoader({
-  v: "4.0",
-  tk: "your map token",
-  plugins: ["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]
-}).then(() => {
-  const map = new T.Map("mapContainer", {...});
-  const marker = new T.Marker({...});
-  map.addOverlay(marker);
-});
+  import { useApiLoader } from "vue-tianditu";
+  // 加载API
+  useApiLoader({
+    v: "4.0",
+    tk: "your map token",
+    plugins: ["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]
+  }).then(() => {
+    const map = new T.Map("mapContainer", {...});
+    const marker = new T.Marker({...});
+    map.addOverlay(marker);
+  });
 </script>
 ```
+
 - 使用组件，监听组件的初始化事件
+
 ```html
 <template>
   <tdt-map @init="mapInit"></tdt-map>
 </template>
 
 <script>
-function mapInit(map){
-  // 此时原生API中的T已存在window中
-  const marker = new T.Marker({...})
-  map.addOverlay(marker);
-}
+  function mapInit(map){
+    // 此时原生API中的T已存在window中
+    const marker = new T.Marker({...})
+    map.addOverlay(marker);
+  }
 </script>
 ```
+
 - 注册了组件，使用API加载器异步等待API加载完成
+
 ```js
 // 不用传参数，异步等待之前注册组件时带参数加载的API加载完成
 useApiLoader({}).then(() => {
   const marker = new T.Marker({...});
 });
 ```
+
 如果项目中用到了eslint，则需要在eslintrc配置文件中加入
+
 ```js
 {
   ...
@@ -176,4 +183,3 @@ useApiLoader({}).then(() => {
   }
 }
 ```
-

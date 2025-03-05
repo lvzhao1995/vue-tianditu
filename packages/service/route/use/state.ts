@@ -1,14 +1,14 @@
-import { reactive, inject } from "vue-demi";
-import { SearchState, DrivingState, TransitState, RouteState } from "../types";
+import { inject, reactive } from "vue";
+import type { DrivingState, RouteState, SearchState, TransitState } from "../types";
 
 export function useState() {
   const searchState: SearchState = {
     tdtMap: null,
     localSearch: null,
     startKeyword: "",
-    startMarker: [],
+    startMarker: null,
     endKeyword: "",
-    endMarker: [],
+    endMarker: null,
     routeType: 0,
     poiType: "start",
     pois: [],
@@ -34,7 +34,5 @@ export function useState() {
   };
 
   const injectState = inject<RouteState>("routeState");
-  const state = injectState || reactive({ ...searchState, ...drivingState, ...transitState });
-
-  return state;
+  return injectState || reactive({ ...searchState, ...drivingState, ...transitState });
 }

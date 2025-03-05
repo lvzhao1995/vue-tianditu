@@ -1,5 +1,5 @@
-import { defineComponent, PropType } from "vue-demi";
-import { h } from "../../../utils";
+import { defineComponent, type PropType } from "vue";
+import { h } from "~/utils/h-demi";
 import "../styles/search-suggests.scss";
 
 export const SearchSuggests = defineComponent({
@@ -9,6 +9,7 @@ export const SearchSuggests = defineComponent({
   },
   emits: {
     /** 点击搜索建议项 */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "suggest-click": (e: T.LocalSearchSuggest) => true
   },
   setup(props, { emit }) {

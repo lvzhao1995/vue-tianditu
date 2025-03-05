@@ -1,6 +1,5 @@
-const { switch3, copyDocs, exec } = require("./utils");
+import { copyDocs, exec } from "./utils.js";
 
-switch3();
 copyDocs();
 exec("git add docs/index.md");
 exec("git add docs/CHANGELOG.md");

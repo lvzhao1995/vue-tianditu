@@ -1,7 +1,8 @@
-import { defineComponent, onMounted, onUnmounted } from "vue-demi";
-import { useEvent, useMapRoot } from "../use";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
-import { h } from "../utils";
+import { defineComponent, onMounted, onUnmounted } from "vue";
+import { useEvent } from "~/use/event";
+import { useMapRoot } from "~/use/mapRoot";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
+import { h } from "~/utils/h-demi";
 
 export const TdtControl = defineComponent({
   name: "TdtControl",

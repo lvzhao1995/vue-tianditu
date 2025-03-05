@@ -1,6 +1,6 @@
-import { ToolInstances } from "../types";
-import { Props } from "./";
-import { toIcon } from "../../utils";
+import type { ToolInstances } from "../types";
+import type { Props } from "./";
+import { toIcon } from "~/utils/converter";
 
 export function useInit(props: Props, map: T.Map) {
   const { markTool, polygonTool, polylineTool, rectangleTool, circleTool, paintBrushTool } = props;

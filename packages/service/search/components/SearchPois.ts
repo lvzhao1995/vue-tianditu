@@ -1,6 +1,6 @@
-import { defineComponent, PropType } from "vue-demi";
+import { defineComponent, type PropType } from "vue";
 import { SearchPage } from "./SearchPage";
-import { h } from "../../../utils";
+import { h } from "~/utils/h-demi";
 import "../styles/search-pois.scss";
 
 export type PageProps = InstanceType<typeof SearchPage>["$props"];
@@ -14,7 +14,9 @@ export const SearchPois = defineComponent({
   },
   emits: {
     /** 点击搜索结果项触发 */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "poi-click": (e: T.LocalSearchPoi) => true,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "update:page": (e: PageProps) => true
   },
   setup(props, { emit }) {

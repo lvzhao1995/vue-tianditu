@@ -1,5 +1,7 @@
+import type { IconOptions } from "~/utils/types";
+
 export interface MarkToolOptions {
-  icon?: VT.IconOptions | string;
+  icon?: IconOptions | string;
   follow?: boolean;
 }
 

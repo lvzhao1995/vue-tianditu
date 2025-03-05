@@ -1,6 +1,6 @@
-import { watch } from "vue-demi";
-import { toLngLat, toPoint } from "../../../utils";
-import { Props } from "./";
+import { watch } from "vue";
+import { toLngLat, toPoint } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useWatch({ props, instance, map }: { props: Props; instance: T.InfoWindow; map: T.Map }) {
   watch(
@@ -17,7 +17,11 @@ export function useWatch({ props, instance, map }: { props: Props; instance: T.I
       if (val instanceof Array) {
         map.openInfoWindow(instance, toLngLat(val));
       } else {
-        val ? val.openInfoWindow(instance) : instance.closeInfoWindow();
+        if (val) {
+          val.openInfoWindow(instance);
+        } else {
+          instance.closeInfoWindow();
+        }
       }
     },
     { immediate: true }

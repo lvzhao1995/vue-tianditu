@@ -1,15 +1,10 @@
-<center>
+# vue-tianditu
 
-<h1>VueTianditu</h1>
-<p>天地图 vue 组件库</p>
-<p>同时支持 Vue3 和 Vue2(composition-api)</p>
-<p>
-<a href="https://soullyoko.github.io/vue-tianditu/">文档</a>
-</p>
+- 天地图 vue 组件库
 
-</center>
+- vue-tianditu v2 同时支持 Vue3 和 Vue2(composition-api)
 
-# 快速开始
+- [vue-tianditu v2 文档](https://soullyoko.github.io/vue-tianditu/)
 
 ## 安装
 
@@ -19,7 +14,9 @@ npm i vue-tianditu
 yarn add vue-tianditu
 ```
 
-## 全局引入
+## 快速上手
+
+### 全局引入
 
 全部引入，解放双手
 
@@ -62,30 +59,16 @@ app.mount("#app");
 </style>
 ```
 
-### 类型提示
+### 按需引入
 
-在 tsconfig.json 中通过 compilerOptions.types 指定全局组件类型，需要使用 Volar 插件支持。
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    // ...
-    "types": ["vue-tianditu/global"]
-  }
-}
-```
-
-## 按需引入
-
-按需引入，优化包体积
+按需引入，配合 ts 获得类型提示
 
 `App.vue`
 
 ```html
 <template>
   <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadConfig"></tdt-map>
+    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadScript"></tdt-map>
   </div>
 </template>
 
@@ -107,7 +90,7 @@ app.mount("#app");
 </style>
 ```
 
-## API 加载器
+### API 加载器
 
 甚至可以把它当作无情的 API 加载工具
 
@@ -126,7 +109,7 @@ useApiLoader({
 ## 辅助函数
 
 ```ts
-import { toLngLat, toLngLats, toBounds, toPoint, toIcon } from "vue-tianditu";
+import { toLngLat, toBounds, toPoint, toIcon } from "vue-tianditu";
 ```
 
 ### 说明
@@ -134,7 +117,69 @@ import { toLngLat, toLngLats, toBounds, toPoint, toIcon } from "vue-tianditu";
 | 函数名 | 返回值 | 描述 |
 | --- | --- | --- |
 | toLngLat(lnglat:[number,number]) | T.LngLat | 转换为经纬度对象。<br>参数说明:<br>lnglat:经纬度数组 |
-| toLngLats(lnglats:[number,number][]) | T.LngLat[] | 转换为由经纬度对象构成数组。<br>参数说明:<br>lnglats:由经纬度数组构成的数组 |
 | toBounds(bounds:[[number,number],[number,number]]) | T.Bounds | 转换为地理范围对象。<br>参数说明:<br>bounds:地理范围数组 |
 | toPoint(point:[number,number]) | T.Point | 转换为像素坐标点对象。<br>参数说明:<br>point:像素坐标点数组 |
 | toIcon(icon:IconOption\|string) | T.Icon | 转换为图标对象。<br>参数说明:<br>`icon:string//图片地址` 或 `{iconUrl:string,//图片地址`<br>`iconSize:[number,number],//图片大小`<br>`iconAnchor:[number,number]//偏移}` |
+
+## 调用原生API
+
+由于API是通过`useApiLoader`异步加载的，所以需要在API加载完成后才能使用天地图原生的API，有以下三种方式:
+
+- 不使用组件，只使用API加载器
+
+```html
+<template>
+  <div id="mapContainer"></div>
+</template>
+
+<script>
+  import { useApiLoader } from "vue-tianditu";
+  // 加载API
+  useApiLoader({
+    v: "4.0",
+    tk: "your map token",
+    plugins: ["D3", "CarTrack", "HeatmapOverlay", "BufferTool", "ImageOverLayer"]
+  }).then(() => {
+    const map = new T.Map("mapContainer", {...});
+    const marker = new T.Marker({...});
+    map.addOverlay(marker);
+  });
+</script>
+```
+
+- 使用组件，监听组件的初始化事件
+
+```html
+<template>
+  <tdt-map @init="mapInit"></tdt-map>
+</template>
+
+<script>
+  function mapInit(map){
+    // 此时原生API中的T已存在window中
+    const marker = new T.Marker({...})
+    map.addOverlay(marker);
+  }
+</script>
+```
+
+- 注册了组件，使用API加载器异步等待API加载完成
+
+```js
+// 不用传参数，异步等待之前注册组件时带参数加载的API加载完成
+useApiLoader({}).then(() => {
+  const marker = new T.Marker({...});
+});
+```
+
+如果项目中用到了eslint，则需要在eslintrc配置文件中加入
+
+```js
+{
+  ...
+  globals: {
+    ...
+    T: "readonly"
+  }
+}
+```

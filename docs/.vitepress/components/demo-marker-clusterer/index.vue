@@ -13,9 +13,10 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 import { withBase } from "vitepress";
 
+defineOptions({ name: "demo-marker-clusterer" });
 const state = reactive({
   center: [116.40969, 37.43997],
   zoom: 3,
@@ -64,13 +65,10 @@ function onClick(e: any) {
   state.target = e.layer;
   state.content = `${e.layer.extData}<br>[${e.lnglat.lng}, ${e.lnglat.lat}]`;
 }
+
 function onClusterClick(e: any) {
   console.log("onClusterClick", e);
 }
-</script>
-
-<script lang="ts">
-export default { name: "demo-marker-clusterer" };
 </script>
 
 <style scoped>

@@ -1,9 +1,9 @@
-import { PropType } from "vue-demi";
-import { DefineEmits, DefineProps } from "../../../types";
+import type { PropType } from "vue";
+import type { DefineEmits, DefineProps, IconOptions, LngLat } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 图标类用来表达注记。default:T.Icon.Default() */
-  icon: { type: [String, Object] as PropType<VT.IconOptions | string> },
+  icon: { type: [String, Object] as PropType<IconOptions | string> },
   /** 决定注记是否可被鼠标或触摸拖动 */
   draggable: { type: Boolean, default: false },
   /** 默认情况下，注记图片的叠置顺序由纬度自动设置。如果你想将某一注记放置于其他之上可用这个选项，设置一个较大的值即可，比如1000（或是相反地设置一个较大的负值） */
@@ -16,7 +16,7 @@ export const NATIVE_PROPS = {
 
 export const EXTRA_PROPS = {
   /** 经纬度 */
-  position: { type: Array as unknown as PropType<VT.LngLat>, default: () => [0, 0] },
+  position: { type: Array as unknown as PropType<LngLat>, default: () => [0, 0] },
   /** 是否可见 */
   visible: { type: Boolean, default: true },
   /** 自定义属性 */

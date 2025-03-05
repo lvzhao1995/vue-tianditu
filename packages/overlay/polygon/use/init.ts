@@ -1,9 +1,9 @@
-import { toLngLats } from "../../../utils";
-import { Props } from "./";
+import { toLngLats } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useInit(props: Props) {
   const { path, color, weight, opacity, lineStyle, fillColor, fillOpacity } = props;
-  const instance = new T.Polygon(toLngLats(path), {
+  return new T.Polygon(toLngLats(path), {
     color,
     weight,
     opacity,
@@ -11,5 +11,4 @@ export function useInit(props: Props) {
     fillColor,
     fillOpacity
   });
-  return instance;
 }

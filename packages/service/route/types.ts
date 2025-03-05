@@ -1,10 +1,12 @@
+import type { LngLat, LngLats } from "~/utils/types";
+
 export interface SearchState {
   tdtMap: T.Map | null;
   localSearch: T.LocalSearch | null;
   startKeyword: string;
-  startMarker: VT.LngLat;
+  startMarker: LngLat | null;
   endKeyword: string;
-  endMarker: VT.LngLat;
+  endMarker: LngLat | null;
   routeType: number; // 0: "驾车", 1: "公交", 2: "步行"
   poiType: "start" | "end";
   pois: T.LocalSearchPoi[] | false;
@@ -14,7 +16,7 @@ export interface SearchState {
 
 export interface DrivingState {
   drivingRoute: T.DrivingRoute | null;
-  drivingLines: VT.LngLats[];
+  drivingLines: LngLats[];
   drivingPolicy: T.DrivingRouteOptions["policy"];
   drivingPlans: T.DrivingRouteResult["results"][];
   drivingPlanIndex: number;
@@ -25,10 +27,10 @@ export interface TransitState {
   transitPolicy: T.TransitRouteOptions["policy"];
   transitPlans: T.TransitRouteResult["results"]["lines"];
   transitPlanIndex: number;
-  walkLines: VT.LngLats[];
-  busLines: VT.LngLats[];
-  busMarkers: VT.LngLat[];
-  metroMarkers: VT.LngLat[];
+  walkLines: LngLats[];
+  busLines: LngLats[];
+  busMarkers: LngLats;
+  metroMarkers: LngLats;
 }
 
 export type RouteState = SearchState & DrivingState & TransitState;

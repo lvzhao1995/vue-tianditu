@@ -1,5 +1,5 @@
-import { defineComponent, computed } from "vue-demi";
-import { h } from "../../../utils";
+import { defineComponent, computed } from "vue";
+import { h } from "~/utils/h-demi";
 import "../styles/search-page.scss";
 
 export const SearchPage = defineComponent({
@@ -12,6 +12,7 @@ export const SearchPage = defineComponent({
     total: { type: Number, default: 0 }
   },
   emits: {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "update:current": (e: number) => true
   },
   setup(props, { emit }) {

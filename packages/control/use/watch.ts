@@ -1,6 +1,6 @@
-import { watch } from "vue-demi";
-import { toPoint } from "../../utils";
-import { Props } from "./";
+import { watch } from "vue";
+import { toPoint } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useWatch({ props, instance }: { props: Props; instance: T.Control }) {
   watch(

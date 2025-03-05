@@ -1,30 +1,6 @@
-const packageJson = require("../package.json");
-const { exec: p_exec, execSync } = require("child_process");
+import { exec as p_exec, execSync } from "node:child_process";
 
-/**
- * @returns "2"|"3"
- */
-function getVueVersion() {
-  const vue = packageJson.devDependencies.vue;
-  const version = vue.match(/\d{1,}/)?.[0];
-  return version;
-}
-
-function switch2() {
-  if (getVueVersion() != "2") {
-    execSync("yarn add vue@2.6.14");
-    execSync("vue-demi-switch 2");
-  }
-}
-
-function switch3() {
-  if (getVueVersion() != "3") {
-    execSync("yarn add vue");
-    execSync("vue-demi-switch 3");
-  }
-}
-
-function exec(command, cb) {
+export function exec(command, cb) {
   if (cb) {
     const callback = (error, stdout, stderr) => {
       if (error) {
@@ -40,13 +16,11 @@ function exec(command, cb) {
   }
 }
 
-function copyDocs({ readme = true, changelog = true } = {}) {
-  readme && execSync("ncp README.md docs/index.md");
-  changelog && execSync("ncp CHANGELOG.md docs/CHANGELOG.md");
+export function copyDocs({ readme = true, changelog = true } = {}) {
+  if (readme) {
+    execSync("ncp README.md docs/index.md");
+  }
+  if (changelog) {
+    execSync("ncp CHANGELOG.md docs/CHANGELOG.md");
+  }
 }
-
-module.exports.getVueVersion = getVueVersion;
-module.exports.switch2 = switch2;
-module.exports.switch3 = switch3;
-module.exports.copyDocs = copyDocs;
-module.exports.exec = exec;

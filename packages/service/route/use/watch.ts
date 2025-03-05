@@ -1,6 +1,6 @@
-import { watch } from "vue-demi";
-import { RouteState } from "../types";
-import { toLngLat, toLngLats } from "../../../utils";
+import { watch } from "vue";
+import type { RouteState } from "../types";
+import { toLngLat, toLngLats, toLonLatNumberArray } from "~/utils/converter";
 
 export function useWatch(state: RouteState) {
   function resetRoutes() {
@@ -10,6 +10,7 @@ export function useWatch(state: RouteState) {
     state.busMarkers = [];
     state.metroMarkers = [];
   }
+
   function resetPlans() {
     state.transitPlans = [];
     state.transitPlanIndex = 0;
@@ -25,7 +26,7 @@ export function useWatch(state: RouteState) {
     ({ startMarker, endMarker, routeType, drivingPolicy, transitPolicy }) => {
       resetPlans();
       resetRoutes();
-      if (startMarker.length && endMarker.length) {
+      if (startMarker && endMarker) {
         switch (routeType) {
           case 0:
             state.drivingRoute?.setPolicy(drivingPolicy);
@@ -56,7 +57,7 @@ export function useWatch(state: RouteState) {
       const lines = routelatlon
         .split(";")
         .filter(e => e)
-        .map(e => e.split(",").map(Number));
+        .map(toLonLatNumberArray);
       state.drivingLines.push(lines);
       //   drivingPlans.map(plan =>
       //   plan.routelatlon
@@ -80,11 +81,9 @@ export function useWatch(state: RouteState) {
           line.linePoint
             .split(";")
             .filter(e => e)
-            .map(e => e.split(",").map(Number))
+            .map(toLonLatNumberArray)
         );
-        const markers = [segment.stationStart, segment.stationEnd].map(station =>
-          station.lonlat.split(",").map(Number)
-        );
+        const markers = [segment.stationStart, segment.stationEnd].map(station => toLonLatNumberArray(station.lonlat));
         switch (segment.segmentType) {
           case 1:
           case 4:

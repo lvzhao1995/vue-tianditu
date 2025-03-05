@@ -1,8 +1,9 @@
-import { Emit, Props } from "./";
-import { toBounds } from "../../utils";
+import type { Emit, Props } from "./";
+import { toBounds } from "~/utils/converter";
+import type { ControlName, ControlOptions } from "~/utils/types";
 
 export function useControls(props: Props, map: T.Map, emit: Emit) {
-  props.controls?.forEach((option: VT.ControlName | VT.ControlOptions) => {
+  props.controls?.forEach((option: ControlName | ControlOptions) => {
     if (typeof option === "string") {
       addControlByName(option);
     } else if (typeof option === "object") {
@@ -10,7 +11,7 @@ export function useControls(props: Props, map: T.Map, emit: Emit) {
     }
   });
 
-  function addControlByName(option: VT.ControlName) {
+  function addControlByName(option: ControlName) {
     const controlName = option;
     if (!T.Control[controlName]) {
       setTimeout(() => addControlByName(option));
@@ -24,7 +25,7 @@ export function useControls(props: Props, map: T.Map, emit: Emit) {
     map.addControl(control);
   }
 
-  function addControlByOption(option: VT.ControlOptions) {
+  function addControlByOption(option: ControlOptions) {
     const controlName = option.name;
     if (!T.Control[controlName]) {
       setTimeout(() => addControlByOption(option));
@@ -40,7 +41,9 @@ export function useControls(props: Props, map: T.Map, emit: Emit) {
             };
           });
           const control = new T.Control.MapType(mapTypes);
-          option.position && control.setPosition(option.position);
+          if (option.position) {
+            control.setPosition(option.position);
+          }
           map.addControl(control);
         }
         break;

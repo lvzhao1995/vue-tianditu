@@ -1,4 +1,4 @@
-import { DefineEmits, DefineProps } from "../../../types";
+import type { DefineEmits, DefineProps } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 用","分隔的多个图层列表 */

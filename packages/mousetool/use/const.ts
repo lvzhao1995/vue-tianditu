@@ -1,6 +1,6 @@
-import { PropType } from "vue-demi";
-import { MarkToolOptions, PaintBrushToolOptions, ToolEvents, ToolInstances } from "../types";
-import { DefineEmits, DefineProps } from "../../types";
+import type { PropType } from "vue";
+import type { MarkToolOptions, PaintBrushToolOptions, ToolEvents, ToolInstances } from "../types";
+import type { DefineEmits, DefineProps } from "~/utils/types";
 
 export const NATIVE_PROPS = {
   /** 标点的配置项 */

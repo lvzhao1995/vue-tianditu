@@ -1,9 +1,9 @@
-import { toBounds } from "../../../utils";
-import { Props } from "./";
+import { toBounds } from "~/utils/converter";
+import type { Props } from "./";
 
 export function useInit(props: Props, attrs: Record<string, unknown>) {
   const { url, minZoom, maxZoom, errorTileUrl, opacity, zIndex, bounds } = props;
-  const instance = new T.TileLayer.TDT(url, {
+  return new T.TileLayer.TDT(url, {
     minZoom,
     maxZoom,
     errorTileUrl,
@@ -12,5 +12,4 @@ export function useInit(props: Props, attrs: Record<string, unknown>) {
     bounds: bounds.length ? toBounds(bounds) : undefined,
     ...attrs
   });
-  return instance;
 }

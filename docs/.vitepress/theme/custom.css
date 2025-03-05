@@ -1,0 +1,6 @@
+.demo-button {
+  padding: 1px 6px;
+  border: 2px outset;
+  border-image-repeat: stretch;
+  background-color: rgb(240, 240, 240);
+}

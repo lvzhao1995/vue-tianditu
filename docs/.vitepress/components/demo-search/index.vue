@@ -9,8 +9,11 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue-demi";
+import { reactive } from "vue";
 
+defineOptions({
+  name: "demo-search"
+});
 const state = reactive({
   center: [113.280637, 23.125178],
   zoom: 11
@@ -25,10 +28,6 @@ function poiClick(poi: T.LocalSearchPoi) {
 function suggestClick(suggest: T.LocalSearchSuggest) {
   console.log(suggest);
 }
-</script>
-
-<script lang="ts">
-export default { name: "demo-search" };
 </script>
 
 <style scoped>
