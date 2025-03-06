@@ -2,7 +2,7 @@
 
 - 天地图 vue 组件库
 
-- [vue-tianditu v2 文档](https://soullyoko.github.io/vue-tianditu/)
+- [vue-tianditu2 文档](https://lvzhao1995.github.io/vue-tianditu/)
 
 ## 说明
 
@@ -26,10 +26,10 @@ yarn add vue-tianditu2
 // main.ts
 import { createApp } from "vue";
 import App from "./App.vue";
-import VueTianditu from "vue-tianditu2";
+import { install } from "vue-tianditu2";
 
 const app = createApp(App);
-app.use(VueTianditu, {
+app.use(install, {
   v: "4.0", //目前只支持4.0版本
   tk: "your map token"
 });
@@ -64,15 +64,18 @@ app.mount("#app");
 
 ### 按需引入
 
-按需引入，配合 ts 获得类型提示
+按需引入，配合 ts 获得类型提示。
 
-`App.vue`
+- 使用组件时传入接口参数
+
+**`loadConfig`仅第一次生效，后续调用忽略此参数。**
+
 
 ```html
-
+<!--App.vue-->
 <template>
   <div class="mapDiv">
-    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadScript"></tdt-map>
+    <tdt-map :center="state.center" :zoom="state.zoom" :loadConfig="loadConfig"></tdt-map>
   </div>
 </template>
 
@@ -81,6 +84,48 @@ app.mount("#app");
   import { TdtMap, type LngLat } from "vue-tianditu2";
 
   const loadConfig = { v: "4.0", tk: "your map token" };
+  const state = reactive({
+    center: [113.280637, 23.125178] as LngLat,
+    zoom: 12
+  });
+</script>
+
+<style>
+  .mapDiv {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+```
+
+- 单独调用`useApiLoader`
+
+```ts
+// main.ts
+import { createApp } from "vue";
+import App from "./App.vue";
+import { useApiLoader } from "vue-tianditu2";
+
+const app = createApp(App);
+useApiLoader( {
+  v: "4.0", //目前只支持4.0版本
+  tk: "your map token"
+});
+app.mount("#app");
+```
+
+```html
+<!--App.vue-->
+<template>
+  <div class="mapDiv">
+    <tdt-map :center="state.center" :zoom="state.zoom"></tdt-map>
+  </div>
+</template>
+
+<script lang="ts" setup>
+  import { reactive } from "vue";
+  import { TdtMap, type LngLat } from "vue-tianditu2";
+
   const state = reactive({
     center: [113.280637, 23.125178] as LngLat,
     zoom: 12
