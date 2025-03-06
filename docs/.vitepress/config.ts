@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 import path from "path";
 
 export default defineConfig({
-  base: "/vue-tianditu2/",
+  base: "/vue-tianditu/",
   lang: "zh-CN",
   title: "VueTianditu",
   description: "Vue Components for TiandituApi",
