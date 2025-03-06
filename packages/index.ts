@@ -1,4 +1,3 @@
-/// <reference types="tianditu-types" />
 export { install } from "./install";
 
 export * from "./components";
