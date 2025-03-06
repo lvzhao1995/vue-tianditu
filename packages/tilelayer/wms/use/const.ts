@@ -1,4 +1,5 @@
 import type { DefineEmits, DefineProps } from "~/utils/types";
+import type { PropType } from "vue";
 
 export const NATIVE_PROPS = {
   /** 用","分隔的多个图层列表 */
@@ -12,7 +13,7 @@ export const NATIVE_PROPS = {
   /** 请求服务的版本 */
   version: { type: String },
   /** 地图投影类型 */
-  srs: { type: String },
+  srs: { type: String as PropType<T.MapCode> },
   /** 图层服务地址 */
   url: { type: String, default: "" }
 };
