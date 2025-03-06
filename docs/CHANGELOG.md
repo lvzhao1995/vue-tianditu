@@ -1,3 +1,13 @@
+# [3.0.0](https://github.com/lvzhao1995/vue-tianditu/compare/v3.0.0-beta.0...v3.0.0) (2025-03-06)
+
+
+### Bug Fixes
+
+* **map:** 修复地图参数类型错误的问题 ([58d17a4](https://github.com/lvzhao1995/vue-tianditu/commit/58d17a498ce21526f8012759e279fca1dbd4d847))
+* **tilelayer:** 修复一处类型错误 ([c07156f](https://github.com/lvzhao1995/vue-tianditu/commit/c07156f802248abad72c187386b03378321d08e5))
+
+
+
 # [3.0.0-beta.0](https://github.com/lvzhao1995/vue-tianditu/compare/v2.7.6...v3.0.0-beta.0) (2025-03-05)
 
 
