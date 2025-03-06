@@ -5,7 +5,7 @@ import type { LoadConfig } from "~/use/apiLoader";
 
 export const NATIVE_PROPS = {
   /** EPSG:900913(墨卡托投影)，EPSG:4326(大地平面投影) */
-  projection: { type: String, default: "EPSG:900913" },
+  projection: { type: String as PropType<T.MapCode>, default: "EPSG:900913" },
   /** 地图允许展示的最小级别 */
   minZoom: { type: Number, default: 1 },
   /** 地图允许展示的最大级别 */
