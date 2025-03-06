@@ -1,1 +1,0 @@
-import{_ as i,c as a,o as n,ai as t}from"./chunks/framework.yXDNUQ7B.js";const g=JSON.parse('{"title":"vue-tianditu2","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),h={name:"index.md"};function k(l,s,p,e,E,r){return n(),a("div",null,s[0]||(s[0]=[t("",30)]))}const y=i(h,[["render",k]]);export{g as __pageData,y as default};
