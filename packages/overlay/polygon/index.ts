@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeMount, onUnmounted } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { useEvent } from "~/use/event";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
 
 export const TdtPolygon = defineComponent({
   name: "TdtPolygon",
@@ -23,4 +23,4 @@ export const TdtPolygon = defineComponent({
   }
 });
 
-export type TdtPolygon = InstanceType<typeof TdtPolygon>;
+export type TdtPolygonInstance = InstanceType<typeof TdtPolygon>;

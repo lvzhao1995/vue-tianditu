@@ -23,4 +23,4 @@ export const TdtMarker = defineComponent({
   }
 });
 
-export type TdtMarker = InstanceType<typeof TdtMarker>;
+export type TdtMarkerInstance = InstanceType<typeof TdtMarker>;

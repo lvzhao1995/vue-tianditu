@@ -45,4 +45,4 @@ export const TdtInfowindow = defineComponent({
   }
 });
 
-export type TdtInfowindow = InstanceType<typeof TdtInfowindow>;
+export type TdtInfowindowInstance = InstanceType<typeof TdtInfowindow>;

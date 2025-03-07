@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeMount, onUnmounted } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { useEvent } from "~/use/event";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
 
 export const TdtTilelayer = defineComponent({
   name: "TdtTilelayer",
@@ -23,4 +23,4 @@ export const TdtTilelayer = defineComponent({
   }
 });
 
-export type TdtTilelayer = InstanceType<typeof TdtTilelayer>;
+export type TdtTilelayerInstance = InstanceType<typeof TdtTilelayer>;

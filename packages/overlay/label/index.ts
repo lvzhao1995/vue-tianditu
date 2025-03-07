@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeMount, onUnmounted } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { useEvent } from "~/use/event";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
 
 export const TdtLabel = defineComponent({
   name: "TdtLabel",
@@ -23,4 +23,4 @@ export const TdtLabel = defineComponent({
   }
 });
 
-export type TdtLabel = InstanceType<typeof TdtLabel>;
+export type TdtLabelInstance = InstanceType<typeof TdtLabel>;

@@ -23,4 +23,4 @@ export const TdtCircle = defineComponent({
   }
 });
 
-export type TdtCircle = InstanceType<typeof TdtCircle>;
+export type TdtCircleInstance = InstanceType<typeof TdtCircle>;

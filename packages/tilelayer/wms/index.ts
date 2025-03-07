@@ -23,4 +23,4 @@ export const TdtTilelayerWms = defineComponent({
   }
 });
 
-export type TdtTilelayerWms = InstanceType<typeof TdtTilelayerWms>;
+export type TdtTilelayerWmsInstance = InstanceType<typeof TdtTilelayerWms>;

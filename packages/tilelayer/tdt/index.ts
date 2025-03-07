@@ -23,4 +23,4 @@ export const TdtTilelayerTdt = defineComponent({
   }
 });
 
-export type TdtTilelayerTdt = InstanceType<typeof TdtTilelayerTdt>;
+export type TdtTilelayerTdtInstance = InstanceType<typeof TdtTilelayerTdt>;

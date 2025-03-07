@@ -1,8 +1,7 @@
-import { defineComponent, onMounted, onUnmounted } from "vue";
+import { defineComponent, h, onMounted, onUnmounted } from "vue";
 import { useEvent } from "~/use/event";
 import { useMapRoot } from "~/use/mapRoot";
 import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
-import { h } from "vue";
 
 export const TdtControl = defineComponent({
   name: "TdtControl",
@@ -31,4 +30,4 @@ export const TdtControl = defineComponent({
   }
 });
 
-export type TdtControl = InstanceType<typeof TdtControl>;
+export type TdtControlInstance = InstanceType<typeof TdtControl>;

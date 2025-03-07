@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeMount, onUnmounted } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { useEvent } from "~/use/event";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
 
 export const TdtPolyline = defineComponent({
   name: "TdtPolyline",
@@ -23,4 +23,4 @@ export const TdtPolyline = defineComponent({
   }
 });
 
-export type TdtPolyline = InstanceType<typeof TdtPolyline>;
+export type TdtPolylineInstance = InstanceType<typeof TdtPolyline>;

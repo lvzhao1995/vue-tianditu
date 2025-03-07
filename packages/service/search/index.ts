@@ -113,4 +113,4 @@ export const TdtSearch = defineComponent({
   }
 });
 
-export type TdtSearch = InstanceType<typeof TdtSearch>;
+export type TdtSearchInstance = InstanceType<typeof TdtSearch>;

@@ -46,4 +46,4 @@ export const TdtCarTrack = defineComponent({
   }
 });
 
-export type TdtCarTrack = InstanceType<typeof TdtCarTrack>;
+export type TdtCarTrackInstance = InstanceType<typeof TdtCarTrack>;

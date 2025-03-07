@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeMount, onUnmounted } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { useEvent } from "~/use/event";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
 
 export const TdtMarkerClusterer = defineComponent({
   name: "TdtMarkerClusterer",
@@ -22,4 +22,4 @@ export const TdtMarkerClusterer = defineComponent({
   }
 });
 
-export type TdtMarkerClusterer = InstanceType<typeof TdtMarkerClusterer>;
+export type TdtMarkerClustererInstance = InstanceType<typeof TdtMarkerClusterer>;

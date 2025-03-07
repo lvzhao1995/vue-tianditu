@@ -43,4 +43,4 @@ export const TdtMap = defineComponent({
   }
 });
 
-export type TdtMap = InstanceType<typeof TdtMap>;
+export type TdtMapInstance = InstanceType<typeof TdtMap>;

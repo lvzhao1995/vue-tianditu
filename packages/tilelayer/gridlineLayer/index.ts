@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeMount, onUnmounted } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { useEvent } from "~/use/event";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
 
 export const TdtGridlineLayer = defineComponent({
   name: "TdtGridlineLayer",
@@ -23,4 +23,4 @@ export const TdtGridlineLayer = defineComponent({
   }
 });
 
-export type TdtGridlineLayer = InstanceType<typeof TdtGridlineLayer>;
+export type TdtGridlineLayerInstance = InstanceType<typeof TdtGridlineLayer>;

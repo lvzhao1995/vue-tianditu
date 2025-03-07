@@ -1,7 +1,7 @@
 import { defineComponent, onBeforeMount, onUnmounted } from "vue";
 import { useMapRoot } from "~/use/mapRoot";
 import { useEvent } from "~/use/event";
-import { useInit, useWatch, PROPS, EVENTS, NATIVE_EVENTS } from "./use";
+import { EVENTS, NATIVE_EVENTS, PROPS, useInit, useWatch } from "./use";
 
 export const TdtRectangle = defineComponent({
   name: "TdtRectangle",
@@ -23,4 +23,4 @@ export const TdtRectangle = defineComponent({
   }
 });
 
-export type TdtRectangle = InstanceType<typeof TdtRectangle>;
+export type TdtRectangleInstance = InstanceType<typeof TdtRectangle>;
