@@ -1,4 +1,4 @@
-import { TdtMarker } from "../../components";
+import type { TdtMarkerInstance } from "../../components";
 import type { LngLat } from "~/utils/types";
 
 export interface SearchLocalState {
@@ -15,7 +15,7 @@ export type SearchResultState = Pick<
 >;
 
 export interface SearchViewState {
-  markers: TdtMarker["$props"][];
+  markers: TdtMarkerInstance["$props"][];
   target: LngLat | null;
   content: string;
   current: number;

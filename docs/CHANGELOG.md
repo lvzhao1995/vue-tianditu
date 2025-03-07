@@ -1,3 +1,12 @@
+## [3.0.1](https://github.com/lvzhao1995/vue-tianditu/compare/v3.0.0...v3.0.1) (2025-03-07)
+
+
+### Bug Fixes
+
+* **types:** 类型调整 ([7e5884d](https://github.com/lvzhao1995/vue-tianditu/commit/7e5884d386408ba2b45d478efd769211e08972c1))
+
+
+
 # [3.0.0](https://github.com/lvzhao1995/vue-tianditu/compare/v3.0.0-beta.0...v3.0.0) (2025-03-06)
 
 
